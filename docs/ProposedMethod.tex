@@ -1,4 +1,90 @@
 \chapter{提案手法}
-$k$ミスマッチデカルト木決定問題を$O(m^2k^2)$で解くアルゴリズムを提案する．
+$k$ミスマッチデカルト木決定問題を動的計画法を用いて，$O(m^2k^2)$時間で解けることを示す．
+\section{素朴なアルゴリズム}
+あとで書く
 \section{動的計画法}
-私たちは，デカルト木の再帰関係を利用してこの問題を解く．
+$DP(i,j,v)$を以下のように定義する．整数$i,j\ (1\leq i \leq j \leq m)$，整数$v\ (i\leq v \leq j)$に対して，
+\begin{displaymath}
+  \begin{aligned}
+    DP(i,j,v) = \min(\{ & j-i+1-|I| \mid I\in L_{[1:m]}\ \land\  CT(S_{I})=CT(P_{I})\ \land \nonumber \\
+                       & v\in I\ \land\ CTR(P_I)=CTR(S_I)=v \} \cup \{j-i+1\})
+  \end{aligned}
+\end{displaymath}
+とする．\\
+次の補題を用いて，$DP(i,j,v)$を計算する．
+\begin{lemma}
+  $DP(i,j,v)$は以下の漸化式を満たす．
+  \begin{displaymath}
+    \begin{aligned}
+      DP(i,j,v) &= leftmiss + rightmiss\\
+      leftmiss &=
+        \begin{cases}
+          \min\{DP(i,v-1,l) \mid l \in A\} & (\text{集合}A=\\& \{l \in \{i,\cdots, v-1\}\mid P[l]>P[v] \land S[l]>S[v]\})\\
+          v-i & (\text{Aが空集合の場合})
+        \end{cases}\\
+      rightmiss &=
+        \begin{cases}
+          \min\{DP(v+1,j,r) \mid r \in B\} & (\text{集合}B=\\&\{l \in \{v+1,\cdots, j\}\mid P[l]\geq P[v] \land S[l]\geq S[v]\})\\
+          j-v & (\text{Bが空集合の場合})
+        \end{cases}
+    \end{aligned}
+  \end{displaymath}
+\end{lemma}
+
+\begin{proof}
+  あとで書く
+\end{proof}
+
+以下の補題\ref{lem:kmissCTMiss}は，$k$ミスマッチデカルト木決定問題を解くためには，$DP(1,m,v)$において，全ての$v\ (1\leq v \leq m)$を調べる必要はなく，$v\in TopK(S[1:m], k+1)$だけを調べればよいことを示す．
+\begin{lemma}\label{lem:kmissCTMiss}
+  \begin{displaymath}
+    CTMiss(S,P)\leq k \Leftrightarrow \min\{DP(1,m,v) \mid v \in TopK(S[1:m], k+1)\} \leq k
+  \end{displaymath}
+\end{lemma}
+
+\begin{proof}
+  あとで書く
+\end{proof}
+
+\section{提案手法の時間計算量}
+補題\ref{lem:kmissCTMiss}より，集合AとBの要素$l$と$r$はそれぞれ集合$TopK(S[i:v-1], k+1)$と集合$TopK(S[v+1:j], k+1)$内の要素からなる．
+任意の$i,j\ (1\leq i \leq j \leq m)$における$TopK(S[i:j],k+1)$に対しては，$O(m^2k)$時間で前処理計算する．
+これにより，求める必要がある$DP(i,j,v)$は$1\leq i \leq j \leq m$,\ $v \in TopK(S[i:j], k+1)$と$l\in TopK(S[i:j], k+1)$の範囲をループすれば求めることができるので，全体の時間計算量は$O(m^2k^2)$時間となる．
+提案手法の疑似コードを以下のAlgorithm\ref{alg:DP}に示す．
+
+\begin{algorithm}
+  \caption{提案手法のアルゴリズム}
+  \label{alg:DP}
+  \KwIn{文字列$S[1:m]$，文字列$P[1:m]$，許容ミスマッチ数$k$}
+  \KwOut{$CTMiss(S,P)\leq k$かどうか True/False}
+  $|S|\times |S| \times k$次元の配列を$|S|-1$で初期化\;
+  $CTMiss \leftarrow |S|-1$\;
+  任意の$i,j\ (1\leq i \leq j \leq m)$において，集合$TopK(S[i:j],k+1)$を前処理で計算する\;
+  \For{$i \leftarrow 1$ \KwTo $m$}{
+    \For{$j \leftarrow i+1$ \KwTo $m$}{
+      \For{$v \in TopK(S[i:j],k+1)$}{
+        $leftmiss \leftarrow v-i$\;
+        \If{$v\geq 2$}{
+          \For {$l \in TopK(S[i:v-1],k+1)$}{
+            \If{$P[l]>P[v] \land S[l]>S[v]$}{
+              $leftmiss \leftarrow \min\{DP(i,v-1,l),\ leftmiss\}$\;
+            }
+          }
+        }
+        $rightmiss \leftarrow j-v$\;
+        \If{$v\leq m-1$}{
+          \For {$r \in TopK(S[v+1:j],k+1)$}{
+            \If{$P[r]\geq P[v] \land S[r]\geq S[v]$}{
+              $rightmiss \leftarrow \min\{DP(v+1,j,r),\ rightmiss\}$\;
+            }
+          }
+        }
+        $DP(i,j,v) \leftarrow \min\{DP(i, j, v),\ leftmiss+rightmiss\}$\;
+        $CTMiss \leftarrow \min\{CTMiss, DP(1,m,v)\}$\;
+      }
+    }
+  }
+  \Return{$CTMiss\leq k$}
+\end{algorithm}
+
+
