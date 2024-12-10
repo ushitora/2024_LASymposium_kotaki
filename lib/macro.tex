@@ -1,0 +1,68 @@
+%-*- coding: utf-8 -*-
+
+% ToDo や，各自のコメント行の表示のon/offは，次の命令で切り替える．
+\newif\ifdraft \drafttrue   %% 作業用
+%\newif\ifdraft\draftfalse  %% 提出用
+
+%%%%%%%%%%%%%%%%%%%% コメント用 %%%%%%%%%%%%%%%%%%
+
+\ifdraft
+% 自分の好きな色を選んで下さい
+\newcommand{\shinocom}[1]{\textcolor{magenta}{[(篠原)#1]}}
+\newcommand{\yoshicom}[1]{\textcolor{red}{[(吉仲)#1]}}
+\newcommand{\usercom}[1]{\textcolor{blue}{[(user)#1]}}
+\newcommand{\todo}[1]{{\color{red}{[ToDo: #1]}}}
+\else
+\newcommand{\shinocom}[1]{}
+\newcommand{\yoshicom}[1]{}
+\newcommand{\usercom}[1]{}
+\newcommand{\todo}[1]{}
+\fi
+
+%%%%%%%%%%%%%%%%%%%% パッケージ %%%%%%%%%%%%%%%%%%
+
+% \usepackage[dvipdfmx]{color}                   % 色の使用
+\usepackage[dvipdfmx]{graphicx}                % 図表
+\usepackage{amssymb}                           % 特殊文字が使用可能となる
+\usepackage{amsmath}                           % 数式を書く人の定番．とりあえず入れておく的な
+\usepackage{amsthm}                            % 定理環境など 
+% \usepackage{comment}                           % 複数行コメントアウト
+% \usepackage{dcolumn}                           % 表中で小数点揃えなどを実現する
+% \usepackage[setpagesize=false]{hyperref}       % PDFファイルにハイパーリンクを埋め込む
+% \usepackage{multirow}                          % 表の縦結合
+% \usepackage{subfigure}                         % 図の中にサブ(a)(b)とか作るやつ
+% \usepackage{colortbl}                          % 表の網掛け
+% \usepackage{graphicx}                          % 文字列の縦圧縮
+% \usepackage{url}                               % URLを使うとき
+\usepackage{tikz}                              % 美しい図を書こう
+\usepackage[ruled, linesnumbered]{algorithm2e} % 擬似コードを書きやすい
+% \SetArgSty{textup}                             % 上記 algorithm2e を使うときはこの設定がおすすめ
+
+
+%%%%%%%%%%%%%%%%%%%% マクロ定義 %%%%%%%%%%%%%%%%%%
+
+%\newcommand{\qed}{\hfill\square}
+
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\msf}[1]{\mathsf{#1}}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\mtt}[1]{\mathtt{#1}}
+\newcommand{\tsf}[1]{\textsf{#1}}
+\newcommand{\tsc}[1]{\textsc{#1}}
+\newcommand{\ttt}[1]{\texttt{#1}}
+\newcommand{\lrangle}[1]{\langle #1 \rangle}
+%\newcommand{\lrangle}[1]{\left\langle #1 \right\rangle} % お好みで
+
+%%%%%%%%%%%%%%%%%%% 定理環境定義 %%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{定義}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{補題}
+\newtheorem{example}{例}
+\newtheorem{proposition}{命題}
+\newtheorem{observation}{観察}
+\newtheorem{problem}{問題}
+\newtheorem{corollary}{系}
+\newtheorem{remark}{注}
+\newtheorem{fact}{事実}
+\renewcommand{\proofname}{\bf 証明}

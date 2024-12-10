@@ -1,0 +1,60 @@
+\newcommand{\prev}[1]{\langle #1 \rangle_{\infty}}
+\newcommand{\myprev}[1]{{\langle #1 \rangle_{\Pi}}}
+\newcommand{\st}[0]{\text{s.t.}}
+\newcommand{\Ninfty}{\mathbb{N}_{\infty}}
+
+% 色の設定
+\definecolor{green}{rgb}{0, 0.6, 0}
+
+\usepackage{xstring}
+\usepackage{tikz}
+\usepackage[super]{cite}
+\usepackage{here}
+\usepackage{multirow}
+\renewcommand{\citeform}[1]{[#1]} % 上付きの参考文献引用
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+
+\newenvironment{myexample}[1]{%
+    \begin{example}#1
+        \begin{quote}
+}{%
+        \end{quote}
+    \end{example}
+}
+
+\newcommand{\colorunderline}[3]{%
+    {\color{#2}\underline{{\color{#3}#1}}}%
+}
+
+\newcommand{\arrangetext}[2]{%
+    \begin{tikzpicture}
+        \foreach \text [count=\i from 0] in {#1} {%
+            \node [xshift=\i * #2mm, font=\strut\ttfamily, inner sep=0pt] at (\i, 0) {\text};
+        }
+    \end{tikzpicture}
+}
+
+\newcommand{\itabular}[2]{%
+    \begin{tabular}{c}
+        #1 \\
+        #2
+    \end{tabular}%
+}
+
+\newcommand{\lsf}[2]{%
+    \mathit{lsf_{#1}\left(#2\right)}
+}
+
+\newcommand{\lsp}[2]{%
+    \mathit{lsp_{#1}\left(#2\right)}
+}
+
+\newcommand{\Lsf}[3]{%
+    \mathit{Lsf_{#1}\left(#2,~#3\right)}
+}
+
+\newcommand{\ELsf}[3]{%
+    \mathit{Lsf_{#1}\left(\overleftarrow{#2},~\overrightarrow{#3}\right)}
+}

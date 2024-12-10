@@ -1,0 +1,122 @@
+%-*- coding: utf-8 -*-
+@article{exact,
+  title={Fast Pattern Matching in Strings},
+  author={Donald Ervin Knuth and James H. Morris and Vaughan R. Pratt},
+  journal={SIAM J. Comput.},
+  year={1977},
+  volume={6},
+  pages={323-350},
+  url={https://api.semanticscholar.org/CorpusID:11697579}
+}
+
+@article{op,
+  author       = {Jinil Kim and
+                  Peter Eades and
+                  Rudolf Fleischer and
+                  Seok{-}Hee Hong and
+                  Costas S. Iliopoulos and
+                  Kunsoo Park and
+                  Simon J. Puglisi and
+                  Takeshi Tokuyama},
+  title        = {Order Preserving Matching},
+  journal      = {CoRR},
+  volume       = {abs/1302.4064},
+  year         = {2013},
+  url          = {http://arxiv.org/abs/1302.4064},
+  eprinttype    = {arXiv},
+  eprint       = {1302.4064},
+  timestamp    = {Thu, 27 Apr 2023 14:57:20 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1302-4064.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{cartesian-tree,
+  author       = {Sung Gwan Park and
+                  Amihood Amir and
+                  Gad M. Landau and
+                  Kunsoo Park},
+  title        = {Cartesian Tree Matching and Indexing},
+  journal      = {CoRR},
+  volume       = {abs/1905.08974},
+  year         = {2019},
+  url          = {http://arxiv.org/abs/1905.08974},
+  eprinttype    = {arXiv},
+  eprint       = {1905.08974},
+  timestamp    = {Wed, 29 May 2019 11:27:50 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1905-08974.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@INPROCEEDINGS{kmiss-exact,
+  author={Landau, Gad M. and Vishkin, Uzi},
+  booktitle={26th Annual Symposium on Foundations of Computer Science}, 
+  title={Efficient string matching in the presence of errors}, 
+  year={1985},
+  volume={},
+  number={},
+  pages={126-136},
+  keywords={Pattern matching;Computer science;Computer errors;Tiles;Contracts},
+  doi={10.1109/SFCS.1985.22}
+}
+
+@article{kmiss-op,
+title = {Order-preserving pattern matching with $k$ mismatches},
+journal = {Theoretical Computer Science},
+volume = {638},
+pages = {136-144},
+year = {2016},
+note = {Pattern Matching, Text Data Structures and Compression},
+issn = {0304-3975},
+doi = {https://doi.org/10.1016/j.tcs.2015.08.022},
+url = {https://www.sciencedirect.com/science/article/pii/S0304397515007690},
+author = {Paweł Gawrychowski and Przemysław Uznański},
+keywords = {Approximate pattern matching, Order-preserving pattern matching},
+abstract = {We consider a generalization of the recently introduced order-preserving pattern matching. The difference between the standard pattern matching and the order-preserving variant is that instead of looking for an exact copy of the pattern, we only require that the relative order between the elements is the same. In our generalization, we additionally allow up to k mismatches between the pattern of length m and the text of length n, and the goal is to construct an efficient algorithm for small values of k. Our solution detects an order-preserving occurrence with up to k mismatches in O(n(log⁡log⁡m+klog⁡log⁡k)) time.}
+}
+
+@InProceedings{reverse-pd,
+author="Auvray, Bastien
+and David, Julien
+and Groult, Richard
+and Lecroq, Thierry",
+editor="Nardini, Franco Maria
+and Pisanti, Nadia
+and Venturini, Rossano",
+title="Approximate Cartesian Tree Matching: An Approach Using Swaps",
+booktitle="String Processing and Information Retrieval",
+year="2023",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="49--61",
+abstract="Cartesian tree pattern matching consists of finding all the factors of a text that have the same Cartesian tree than a given pattern. There already exist theoretical and practical solutions for the exact case. In this paper, we propose the first algorithm for solving approximate Cartesian tree pattern matching. We consider Cartesian tree pattern matching with one swap: given a pattern of length m and a text of length n we present two algorithms that find all the factors of the text that have the same Cartesian tree of the pattern after one transposition of two adjacent symbols. The first algorithm uses a characterization of a linear representation of the Cartesian trees called parent-distance after one swap and runs in time {\$}{\$}{\backslash}varTheta (mn){\$}{\$}using {\$}{\$}{\backslash}varTheta (m){\$}{\$}space. The second algorithm generates all the parent-distance tables of sequences that have the same Cartesian tree than the pattern after one swap. It runs in time {\$}{\$}{\backslash}mathcal {\{}O{\}}((m^2 + n){\backslash}log {\{}m{\}}){\$}{\$}and has {\$}{\$}{\backslash}mathcal {\{}O{\}}(m^2){\$}{\$}space complexity.",
+isbn="978-3-031-43980-3"
+}
+
+@article{SCER,
+author="Yoshiaki, Matsuoka and Takahiro, Aoki and Shunsuke, Inenaga and Hideo, Bannai and Masayuki, Takeda",
+title="Generalized pattern matching and periodicity under substring consistent equivalence relations",
+journal="Theoretical Computer Science",
+ISSN="0304-3975",
+publisher="Elsevier BV",
+year="2016",
+month="12",
+volume="656",
+pages="225-233",
+DOI="10.1016/j.tcs.2016.02.017",
+URL="https://cir.nii.ac.jp/crid/1360848657452661760"
+}
+
+@article{CTM-SCER,
+title = "Finding patterns and periods in Cartesian tree matching",
+author = "Park, {Sung Gwan} and Magsarjav Bataa and Amihood Amir and Landau, {Gad M.} and Kunsoo Park",
+year = "2020",
+month = dec,
+day = "12",
+doi = "https://doi.org/10.1016/j.tcs.2020.09.014",
+language = "English",
+volume = "845",
+pages = "181--197",
+journal = "Theoretical Computer Science",
+issn = "0304-3975",
+publisher = "Elsevier",
+}

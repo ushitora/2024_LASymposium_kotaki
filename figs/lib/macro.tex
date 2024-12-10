@@ -1,0 +1,91 @@
+% beamer関連
+\usepackage{bxdpx-beamer}
+\usepackage{pxjahyper}
+\usepackage{minijs}
+\usefonttheme{professionalfonts}
+
+% tikz
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows.meta, bending, calc}
+
+% その他
+\usepackage[super]{cite}
+\usepackage{efbox}
+\usepackage{xcolor}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[ruled, linesnumbered]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{xstring}
+\usepackage{forloop}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{colortbl}
+
+
+% 色の設定
+\definecolor{green}{rgb}{0, 0.6, 0}
+
+% ラベルの日本語化
+\setbeamertemplate{theorems}[normal font] % イタリック体にしない
+\uselanguage{japanese}
+\languagepath{japanese}
+\deftranslation[to=japanese]{Theorem}{定理}
+\deftranslation[to=japanese]{Corollary}{系}
+\deftranslation[to=japanese]{Lemma}{補題}
+\deftranslation[to=japanese]{Example}{例}
+\deftranslation[to=japanese]{Examples}{例}
+\deftranslation[to=japanese]{Definition}{定義}
+\deftranslation[to=japanese]{Definitions}{定義}
+\deftranslation[to=japanese]{Problem}{問題}
+\deftranslation[to=japanese]{Solution}{解}
+\deftranslation[to=japanese]{Fact}{事実}
+\deftranslation[to=japanese]{Proof}{証明}
+\def\proofname{証明}
+\deftranslation[to=japanese]{Figure}{図}
+
+% \makeatletter
+% \newsavebox{\@brx}
+% \newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+%   \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+% \newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+%   \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+% \makeatother
+
+% コマンド関連
+\renewcommand{\kanjifamilydefault}{\gtdefault} % 既定をゴシック体にする
+\renewcommand{\arraystretch}{0.8} % 表の縦幅を変更
+% \renewcommand{\baselinestretch}{1.5} % 行間を変更
+\renewcommand{\citeform}[1]{[#1]} % 上付きの参考文献引用
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\prev}[1]{{\langle #1 \rangle}_{\infty}}
+\newcommand{\myprev}[1]{{\langle #1 \rangle_{\Pi}}}
+\newcommand{\st}[0]{\text{s.t.}}
+\newcommand{\Ninfty}{\mathbb{N}_{\infty}}
+\newcommand{\arrangetext}[2]{
+    \begin{tikzpicture}
+        \foreach \text [count=\i from 0] in {#1} {
+            \node [xshift=\i * #2mm, font=\strut\ttfamily, inner sep=0pt] at (\i, 0) {\text};
+        }
+    \end{tikzpicture}
+}
+\newcommand{\itabular}[2]{%
+    \begin{tabular}{c}
+        #1 \\
+        #2
+    \end{tabular}%
+}
+\newcommand{\lsf}[2]{%
+    \mathit{lsf_{#1}\left(#2\right)}
+}
+\newcommand{\lsp}[2]{%
+    \mathit{lsp_{#1}\left(#2\right)}
+}
+\newcommand{\Lsf}[3]{%
+    \mathit{Lsf_{#1}\left(#2,~#3\right)}
+}
+\newcommand{\ELsf}[3]{%
+    \mathit{Lsf_{#1}\left(\overleftarrow{#2},~\overrightarrow{#3}\right)}
+}

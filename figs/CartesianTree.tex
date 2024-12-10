@@ -1,0 +1,63 @@
+\documentclass[dvipdfmx,border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+% 変数の定義
+\def\nodedist{5}          % ノード間の水平距離
+\def\leveldist{3}         % レベル間の垂直距離
+\def\nodesize{80}          % ノードの大きさ
+\def\linewd{0.8}           % 線の太さ
+\def\indexdist{3}          % インデックスラベルの距離
+
+% 座標計算用のマクロ
+\pgfmathsetmacro{\xone}{1*\nodedist}    % node 1
+\pgfmathsetmacro{\xtwo}{2*\nodedist}    % node 2 (x座標)
+\pgfmathsetmacro{\xthree}{3*\nodedist}  % node 3
+\pgfmathsetmacro{\xfour}{4*\nodedist}   % node 4
+\pgfmathsetmacro{\xfive}{5*\nodedist}   % node 5
+\pgfmathsetmacro{\xsix}{6*\nodedist}    % node 6
+\pgfmathsetmacro{\xseven}{7*\nodedist}  % node 7
+
+% y座標の計算
+\pgfmathsetmacro{\yone}{-1*\leveldist}    % レベル1
+\pgfmathsetmacro{\ytwo}{-2*\leveldist}    % レベル2
+\pgfmathsetmacro{\ythree}{-3*\leveldist}  % レベル3
+\pgfmathsetmacro{\yfour}{-4*\leveldist}   % レベル4
+
+    \begin{tikzpicture}[scale=1]
+        % スタイルの定義
+        \tikzset{
+            tree node/.style={
+                circle,
+                draw=black,          % 線の色を明示的に指定
+                line width=0.8pt,    % 線の太さを指定
+                minimum size=\nodesize,
+                inner sep=2pt,
+                font=\Huge,
+            },
+            index label/.style={
+                below=3pt,
+                font=\large
+            }
+        }
+
+        % ノードの定義
+        \node[tree node] (n1) at (\xone, \ytwo) {17};
+        \node[tree node] (n2) at (\xtwo, \yone) {10};
+        \node[tree node] (n3) at (\xthree, \ythree) {19};
+        \node[tree node] (n4) at (\xfour, \ytwo) {10};
+        \node[tree node] (n5) at (\xfive, \yfour) {24};
+        \node[tree node] (n6) at (\xsix, \ythree) {15};
+        \node[tree node] (n7) at (\xseven, \yfour) {27};
+
+        % エッジの描画
+        \draw[line width=0.8pt] (n2) -- (n1);
+        \draw[line width=0.8pt] (n2) -- (n4);
+        \draw[line width=0.8pt] (n4) -- (n3);
+        \draw[line width=0.8pt] (n4) -- (n6);
+        \draw[line width=0.8pt] (n6) -- (n5);
+        \draw[line width=0.8pt] (n6) -- (n7);
+
+
+    \end{tikzpicture}
+\end{document}

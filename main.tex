@@ -1,0 +1,40 @@
+%-*- coding: utf-8 -*-
+\documentclass[uplatex,a4paper,12pt,twoside,dvipdfmx]{jsmaster}
+\input{lib/macro.tex}
+\input{lib/my_macro.tex}
+%%%%%%%%%%%%%%%%%%%% タイトル %%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\makeatother
+
+\title{$k$ミスマッチデカルト木問題に関する研究}
+\author{小瀧 由浩}
+\date{2025年1月27日}
+
+\sloppy
+
+%%%%%%%%%%%%%%%%%%%% 目次等作成 %%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%% 論文本体 %%%%%%%%%%%%%%%%%%%%
+
+\input{docs/Introduction.tex}
+\input{docs/Preliminaries.tex}
+\input{docs/ProposedMethod.tex}
+\input{docs/Conclusion.tex}
+
+%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{junsrt}
+\bibliography{ref/ref.bib}
+
+\input{docs/Acknowledgement.tex}
+
+\end{document}
